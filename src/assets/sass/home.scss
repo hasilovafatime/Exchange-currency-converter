@@ -1,0 +1,543 @@
+
+$bg-global: #0a0a0c;
+$bg-panel: #0e0e10;
+$bg-card: #161619;
+$brand-neon: rgb(208, 241, 67);
+$text-white: #ffffff;
+$text-secondary: #6c757d;
+$border-color: #222222;
+$positive-green: #28a745;
+
+.page-wrapper {
+  background-color: $bg-global;
+  min-height: 100vh;
+  color: $text-white;
+
+  .main-container {
+    max-width: 1050px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: $text-white;
+    margin-bottom: 1.5rem;
+    padding-left: 0.25rem;
+    padding-top: 50px;
+  }
+}
+
+* {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $bg-panel;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+    &:hover {
+      background: #444;
+    }
+  }
+}
+
+
+.currency {
+  overflow: visible;
+  background-color: $bg-panel;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+
+  .picker-container {
+    position: relative;
+  }
+
+  .box1 {
+    min-height: 110px;
+    background-color: $bg-card;
+    border: 1px solid #1f1f23;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: #2d2d33;
+    }
+
+    .box-label {
+      color: $text-secondary;
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .amount-input {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      color: $text-white;
+      font-size: 26px;
+      outline: none;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+     
+    }
+
+    .receive-amount {
+      font-size: 26px;
+      color: $brand-neon;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &.loading-dots {
+        color: $text-secondary;
+      }
+    }
+  }
+
+  .swap-container {
+    margin: 0.25rem 0;
+    @media (min-width: 768px) {
+      margin: 0;
+    }
+
+    .swap-btn {
+      width: 40px;
+      height: 40px;
+      background-color: $bg-card;
+      border: 1px solid $text-secondary;
+      color: $text-white;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #222226;
+        border-color: #555;
+      }
+
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .down {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba($text-secondary, 0.1);
+
+    .rate-text {
+      color: $text-secondary;
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .action-buttons {
+      .btn {
+        font-size: 11px;
+        height: 34px;
+        font-weight: 700;
+      }
+
+      .fav-toggle-btn {
+        background-color: $bg-card;
+        color: $text-white;
+        border: 1px solid #333;
+        transition: all 0.2s ease;
+
+        .star-icon {
+          font-size: 12px;
+        }
+
+        &.is-active {
+          background-color: $brand-neon;
+          color: #000;
+          border: none;
+        }
+      }
+
+      .log-btn {
+        background-color: $bg-card;
+        color: $text-white;
+        border: 1px solid #333;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #222226;
+        }
+      }
+    }
+  }
+}
+
+.currency-badge {
+  background-color: #212529; 
+  border: 1px solid $text-secondary;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 50rem;
+  cursor: pointer;
+  user-select: none;
+
+  .flag-img {
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .badge-code {
+    color: $text-white;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  .badge-arrow {
+    color: $text-secondary;
+    font-size: 8px;
+  }
+}
+
+.currency-picker-dropdown {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: #212529;
+  border: 1px solid $text-secondary;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  z-index: 999;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+
+  .search-input {
+    background-color: transparent;
+    color: $text-white;
+    border-color: $text-secondary;
+    margin-bottom: 0.5rem;
+
+    &:focus {
+      background-color: transparent;
+      color: $text-white;
+      border-color: $brand-neon;
+      box-shadow: none;
+    }
+  }
+
+  .no-results {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+
+  .item-select {
+    color: $text-white;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    .flag-img {
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .item-name {
+      color: $text-secondary;
+      font-size: 11px;
+    }
+
+    &:hover {
+      background-color: rgba($brand-neon, 0.1);
+      .item-code {
+        color: $brand-neon;
+      }
+    }
+  }
+}
+
+.details-panel {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: $bg-panel;
+  border: 1px solid $border-color;
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  .panel-header {
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+
+    @media (min-width: 576px) {
+      padding-bottom: 0;
+    }
+
+    .tabs-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .tab-btn {
+      color: $text-secondary;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding-bottom: 10px;
+      background-color: transparent;
+      transition: color 0.2s ease;
+
+      &:hover, &.active {
+        color: $text-white;
+      }
+
+      .badge-count {
+        font-size: 9px;
+        padding: 1px 5px;
+        margin-left: 0.25rem;
+        background-color: $brand-neon;
+        color: #000;
+      }
+
+      .active-line {
+        height: 2px;
+        background-color: $brand-neon;
+        bottom: -1px;
+        z-index: 2;
+      }
+    }
+  }
+
+  .timeframe-group {
+    background-color: $bg-card;
+    margin-bottom: 10px;
+
+    .timeframe-btn {
+      font-size: 11px;
+      border-radius: 4px;
+      color: $text-secondary;
+      background-color: transparent;
+      padding: 0.25rem 0.5rem;
+      transition: all 0.15s ease;
+
+      &:hover {
+        color: $text-white;
+      }
+
+      &.active {
+        background-color: #2c2c30;
+        color: $text-white;
+      }
+    }
+  }
+
+  .history-content {
+    .stats-cards-row {
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background-color: $bg-card;
+
+      .stat-title {
+        color: $text-secondary;
+        font-size: 10px;
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-value {
+        font-size: 14px;
+
+        &.default { color: $text-white; }
+        &.positive { color: $positive-green; }
+      }
+    }
+
+    .chart-box {
+      background-color: $bg-card;
+      min-height: 280px;
+
+      .chart-pair {
+        color: $text-white;
+        font-size: 0.875rem;
+      }
+
+      .chart-meta {
+        color: $text-secondary;
+        font-size: 11px;
+      }
+
+      .chart-container {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  }
+
+  .compare-content {
+    .compare-header {
+      margin-bottom: 1rem;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+
+      .compare-title {
+        color: $text-secondary;
+        .highlight { color: $text-white; }
+      }
+
+      .compare-count {
+        color: $text-secondary;
+      }
+    }
+
+    .compare-row {
+      background-color: $bg-card;
+      border: 1px solid $border-color;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+
+      &:hover {
+        border-color: #2d2d33;
+        transform: translateY(-1px);
+      }
+
+      .currency-info {
+        .flag-img {
+          object-fit: cover;
+          border-radius: 2px;
+        }
+        .info-code {
+          font-size: 12px;
+          color: $text-white;
+        }
+        .info-name {
+          font-size: 10px;
+          color: $text-secondary;
+        }
+      }
+
+      .result-block {
+        .result-value {
+          font-size: 13px;
+          color: $text-white;
+        }
+        .result-rate {
+          font-size: 10px;
+          color: $text-secondary;
+        }
+      }
+
+      .favbtn {
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        transition: transform 0.15s ease;
+
+        .star-icon {
+          font-size: 13px;
+          color: #333;
+          transition: color 0.15s ease;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &.is-favorited {
+          .star-icon {
+            color: $brand-neon;
+          }
+        }
+      }
+    }
+  }
+
+  .favorites-content {
+    .fav-pair-btn {
+      background-color: $bg-card;
+      border: 1px solid $text-secondary;
+      color: $text-white;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #222226;
+        border-color: $brand-neon;
+      }
+    }
+  }
+
+  .log-content {
+    .log-row {
+      background-color: $bg-card;
+      border: 1px solid rgba($text-secondary, 0.1);
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #1a1a1f;
+      }
+
+      .log-text {
+        font-size: 12px;
+        color: $text-white;
+        word-break: break-all;
+
+        .highlight {
+          color: $brand-neon;
+        }
+      }
+
+      .log-time {
+        font-size: 10px;
+        color: $text-secondary;
+      }
+
+      .delete-log-btn {
+        background-color: transparent;
+        color: $text-secondary;
+        margin-bottom: 2px;
+        transition: color 0.15s ease;
+
+        .close-icon {
+          font-size: 13px;
+        }
+
+        &:hover {
+          color: #dc3545;
+        }
+      }
+    }
+  }
+
+  .empty-msg {
+    color: $text-secondary;
+    font-size: 0.875rem;
+  }
+}
+
+.custom-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  background-color: $bg-card;
+  color: $text-white;
+  border: 1px solid $brand-neon;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  max-width: calc(100% - 40px);
+}
