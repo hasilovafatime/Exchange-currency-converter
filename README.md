@@ -18,8 +18,8 @@ This is a complete, real-world solution to the Currency Converter challenge on F
 
 ### Links
 
-- Solution URL: [Add your Frontend Mentor solution URL here](https://github.com/hasilovafatime/Exchange-currency-converter.git)
-- Live Site URL: [Add your live site URL here](exchange-currency-converter.vercel.app)
+- Solution URL: [https://github.com/hasilovafatime/Exchange-currency-converter.git](https://github.com/hasilovafatime/Exchange-currency-converter.git)
+- Live Site URL: [https://exchange-currency-converter.vercel.app](https://exchange-currency-converter.vercel.app)
 
 ## My Process
 
